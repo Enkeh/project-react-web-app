@@ -1,30 +1,21 @@
 import axios from "axios";
 
-const KEY = process.env.REACT_APP_NAPSTER_API_KEY;
-const NAPSTER_API = "https://api.napster.com/v2.2";
-const NAPSTER_IMAGE_URL = "https://api.napster.com/imageserver/v2";
+const EPISODATE_API = "https://www.episodate.com/api";
+const EPISODATE_IMAGE_URL = "https://static.episodate.com/images";
 
-export const albumImageUrl = (album) =>
-  `${NAPSTER_IMAGE_URL}/albums/${album.id}
-/images/300x300.jpg`;
+export const showImageUrl = (show, thumbnail=false) =>
+  `${EPISODATE_IMAGE_URL}/tv-show/${thumbnail?"thumbnail":"full"}/${show.id}.jpg`;
 
 export const fullTextSearch = async (text) => {
   const response = await axios.get(
-    `${NAPSTER_API}/search/verbose?query=${text}&apikey=${KEY}&type=albums`
+    `${EPISODATE_API}/search/?q=${text}&page=1`
   );
   return response.data;
 };
 
-export const fetchAlbumById = async (albumId) => {
+export const fetchShowById = async (showId) => {
   const response = await axios.get(
-    `${NAPSTER_API}/albums/${albumId}?apikey=${KEY}`
-  );
-  return response.data;
-};
-
-export const fetchTracksByAlbumId = async (albumId) => {
-  const response = await axios.get(
-    `${NAPSTER_API}/albums/${albumId}/tracks?apikey=${KEY}`
+    `${EPISODATE_API}/show-details?q=${showId}`
   );
   return response.data;
 };

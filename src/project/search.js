@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import * as client from "./service";
-function NapsterSearch() {
+function Search() {
+  const  { state } = useLocation();
   const [searchResults, setSearchResults] = useState(null);
-  const [searchText, setSearchText] = useState("beatles");
+  const [searchText, setSearchText] = useState(state);
 
-  const searchForAlbums = async (text) => {
+  const searchForShows = async (text) => {
     const results = await client.fullTextSearch(text);
-    setSearchResults(results.search.data.albums);
+    setSearchResults(results.tv_shows);
   };
 
   useEffect(() => {
-    searchForAlbums("beatles");
+    searchForShows(state?state:"");
   }, []);
 
   return (
@@ -19,7 +20,7 @@ function NapsterSearch() {
       <h1>Project</h1>
       <button
         className="btn btn-primary float-end"
-        onClick={() => searchForAlbums(searchText)}
+        onClick={() => searchForShows(searchText)}
       >
         Search
       </button>
@@ -29,11 +30,11 @@ function NapsterSearch() {
         onChange={(e) => setSearchText(e.target.value)}
       />
       {searchResults &&
-        searchResults.map((album) => (
-          <div>
-            <Link to={`/project/napster-album/${album.id}`}>
-              <img src={client.albumImageUrl(album)} />
-              <h3>{album.name}</h3>
+        searchResults.map((show) => (
+          <div key={show.id}>
+            <Link to={`/show/${show.id}`}>
+              <img src={client.showImageUrl(show, true)} />
+              <h3>{show.name}</h3>
             </Link>
           </div>
         ))}
@@ -42,4 +43,4 @@ function NapsterSearch() {
   );
 }
 
-export default NapsterSearch;
+export default Search;

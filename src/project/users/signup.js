@@ -9,7 +9,7 @@ function SignUp() {
   const signUp = async () => {
     try {
       const user = await client.signUp({ username, password });
-      navigate("/project/account");
+      navigate("/account");
     } catch (error) {
       setError(error.message);
     }
@@ -33,7 +33,7 @@ function SignUp() {
       <button className="btn btn-success" onClick={signUp}>
         Sign Up
       </button>
-      <Link to="/project/signin">Sign In</Link>
+      <Link to="/signin">Sign In</Link>
     </div>
   );
 }

@@ -2,11 +2,13 @@ import * as client from "./client";
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import * as followsClient from "../follows/client";
+import { setCurrentUser } from "./reducer";
+import { useDispatch } from "react-redux";
 
 function Account() {
   const [user, setUser] = useState(null);
   const [following, setFollowing] = useState([]);
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const fetchUser = async () => {
     try {
@@ -14,12 +16,13 @@ function Account() {
       setUser(user);
       fetchFollowing(user._id);
     } catch (error) {
-      navigate("/project/signin");
+      navigate("/signin");
     }
   };
   const signOut = async () => {
     await client.signOut();
-    navigate("/project/signin");
+    dispatch(setCurrentUser(null));
+    navigate("/signin");
   };
   const updateUser = async () => {
     await client.updateUser(user._id, user);
@@ -62,7 +65,7 @@ function Account() {
         Save
       </button>
       {user?.role === "ADMIN" && (
-        <Link to="/project/users" className="btn btn-primary">
+        <Link to="/users" className="btn btn-primary">
           Users
         </Link>
       )}
@@ -72,7 +75,7 @@ function Account() {
           <Link
             key={follows.followed._id}
             className="list-group-item"
-            to={`/project/users/${follows.followed._id}`}
+            to={`/users/${follows.followed._id}`}
           >
             {follows.followed.firstName} {follows.followed.lastName} (@
             {follows.followed.username})

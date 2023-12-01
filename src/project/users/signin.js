@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import * as client from "./client";
 import { useNavigate, Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setCurrentUser } from "./reducer";
 function SignIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const signIn = async () => {
     try {
       const user = await client.signIn({ username, password });
-      navigate("/project/account");
+      dispatch(setCurrentUser(user));
+      navigate("/account");
     } catch (error) {
       setError(error.message);
     }

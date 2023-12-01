@@ -18,7 +18,7 @@ function UserList() {
           <Link
             key={user._id}
             className="list-group-item"
-            to={`/project/users/${user._id}`}
+            to={`/users/${user._id}`}
           >
             {user.username} {user.role}
           </Link>
