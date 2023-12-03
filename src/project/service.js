@@ -6,9 +6,9 @@ const EPISODATE_IMAGE_URL = "https://static.episodate.com/images";
 export const showImageUrl = (show, thumbnail=false) =>
   `${EPISODATE_IMAGE_URL}/tv-show/${thumbnail?"thumbnail":"full"}/${show.id}.jpg`;
 
-export const fullTextSearch = async (text) => {
+export const fullTextSearch = async (text, page) => {
   const response = await axios.get(
-    `${EPISODATE_API}/search/?q=${text}&page=1`
+    `${EPISODATE_API}/search/?q=${text}&page=${page}`
   );
   return response.data;
 };

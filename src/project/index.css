@@ -1,14 +1,20 @@
-.wd-darkblue {
-    color:blue;
-    background-color: black;
+.navbar,
+.navbar-default {
+    background-image: linear-gradient(to bottom,#211601 0,#211601 100%) !important; /* overrides background image gradient w/ flat color */
 }
 .wd-inline {
     display: inline-block;
-    background-color: lightgreen;
+    background-color: #211601;
 }
 .wd-green {
-    background-color: lightgreen;
-    color: green;
+    background-color: #211601;
+    color: #699e59;
+}
+.wd-green-page {
+    background-color: #abdc9b;
+}
+.wd-white-background {
+    background-color: white;
 }
 /* Below CSS is variant of Search Bar found from: https://www.sliderrevolution.com/resources/css-search-box/ */
 .wd-search {
@@ -18,31 +24,63 @@
 }
 .wd-searchTerm {
     width: 100%;
-    border: 3px solid green;
+    border: 3px solid #699e59;
     border-right: none;
     padding: 5px;
     height: 40px;
     border-radius: 5px 0 0 5px;
     outline: none;
-    color: green;
-    background-color: lightgreen;
+    color: #abdc9b;
+    background-color: #211601;
 }
 .wd-searchButton {
     width: 40px;
     height: 40px;
-    border: 1px solid green;
-    background: green;
+    border: 1px solid #699e59;
+    background: #699e59;
     text-align: center;
-    color: lightgreen;
+    color: #211601;
     border-radius: 0 5px 5px 0;
     cursor: pointer;
     font-size: 20px;
 }
-.wd-wrap{
-    padding-right:8px;
+.wd-wrap {
+    padding-right:18px;
     width: 30%;
     position: absolute;
     top: 50%;
     left: 85%;
     transform: translate(-50%, -50%);
+}
+.wd-searchTitles {
+    font-size: 36px;
+    color: #abdc9b;
+    padding-top: 20px;
+}
+.wd-searchDetails {
+    font-size: 20px;
+    color: #699e59;
+}
+.wd-black {
+    color: #211601;
+    text-decoration: none;
+}
+.wd-full {
+    min-height: 93vh;
+}
+.wd-genericButton {
+    background-color: #699e59 !important;
+    border: 1px solid #211601 !important;
+    border-radius: 8px !important;
+    color: white !important;
+}
+.wd-alternateButton {
+    background-color: #1A8855 !important;
+    border: 1px solid #211601 !important;
+    border-radius: 8px !important;
+    color: white !important;
+}
+.dropdown-toggle,
+.dropdown-menu {
+  width: 100%;
 }

@@ -8,7 +8,7 @@ import UserDetails from "./users/details";
 import SignIn from "./users/signin";
 import Account from "./users/account";
 import SignUp from "./users/signup";
-import Nav from "./nav";
+import ProjectNav from "./nav";
 import store from "./store";
 import { Provider } from "react-redux";
 import CurrentUser from "./users/currentUser";
@@ -21,7 +21,7 @@ function Project() {
       {/* <CurrentUser> */}
         <div>
           <div>
-            <Nav />
+            <ProjectNav />
           </div>
           <div>
             <Routes>
@@ -30,7 +30,8 @@ function Project() {
               <Route path="/signin" element={<SignIn />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/account" element={<Account />} />
-              <Route path="/search/" element={<Search />} />
+              <Route path="/search/:query/:page" element={<Search />} />
+              <Route path="/search" element={<Search />} />
               <Route path="/show/:id" element={<Show />} />
               <Route
                 path="/users"
