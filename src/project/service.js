@@ -3,8 +3,8 @@ import axios from "axios";
 const EPISODATE_API = "https://www.episodate.com/api";
 const EPISODATE_IMAGE_URL = "https://static.episodate.com/images";
 
-export const showImageUrl = (show, thumbnail=false) =>
-  `${EPISODATE_IMAGE_URL}/tv-show/${thumbnail?"thumbnail":"full"}/${show.id}.jpg`;
+export const showImageUrl = (showId, thumbnail=false) =>
+  `${EPISODATE_IMAGE_URL}/tv-show/${thumbnail?"thumbnail":"full"}/${showId}.jpg`;
 
 export const fullTextSearch = async (text, page) => {
   const response = await axios.get(

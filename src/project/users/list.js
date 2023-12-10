@@ -28,10 +28,11 @@ function UserList() {
               <div className="float-end">
                 <DropdownButton className="wd-alternateButton d-grid" title={user.role}  variant="success" size="sm" style={{"width":"100px"}}>
                   <Dropdown.Item onClick={() => setRole(user, "ADMIN")}> <span>ADMIN</span> </Dropdown.Item>
-                  <Dropdown.Item onClick={() => setRole(user, "USER")}> <span>USER</span> </Dropdown.Item>
+                  <Dropdown.Item onClick={() => setRole(user, "CURATOR")}> <span>CURATOR</span> </Dropdown.Item>
+                  <Dropdown.Item onClick={() => setRole(user, "VIEWER")}> <span>VIEWER</span> </Dropdown.Item>
                 </DropdownButton>
               </div>
-              <Link className="wd-black d-flex" key={user._id} to={"/users/" + user._id}>
+              <Link className="wd-black d-flex" key={user._id} to={"/profile/" + user._id}>
                 {user.username}
               </Link>
             </li>

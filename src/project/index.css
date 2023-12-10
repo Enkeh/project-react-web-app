@@ -66,7 +66,7 @@
     text-decoration: none;
 }
 .wd-full {
-    min-height: 93vh;
+    min-height: 93.7vh;
 }
 .wd-genericButton {
     background-color: #699e59 !important;
@@ -83,4 +83,10 @@
 .dropdown-toggle,
 .dropdown-menu {
   width: 100%;
+}
+.wd-showTitles {
+    font-size: 16px;
+    color: #211601;
+    padding-top: 7px;
+    text-align: left;
 }

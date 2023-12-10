@@ -33,7 +33,7 @@ function ProjectNav() {
           {currentUser && (
           <>
             <li className="nav-item">
-              <Link to="/account" className="nav-link"> Account </Link>
+              <Link to="/profile" className="nav-link"> Profile </Link>
             </li>
             {currentUser.role === "ADMIN" && (
               <li className="nav-item">
@@ -51,7 +51,7 @@ function ProjectNav() {
                 <div className="wd-search">
                     <input type="searchTerm" className="wd-searchTerm" placeholder="Search"
                       value={navSearch} onChange={(e) => setNavSearch(e.target.value)}/>
-                    <Link className="wd-searchButton" to= {"/search/" + navSearch + "/1"}> <FaMagnifyingGlass /> </Link>
+                    <Link className="wd-searchButton" to= {"/search/" + navSearch + "/1"} onClick={() => setNavSearch("")}> <FaMagnifyingGlass /> </Link>
                 </div>
               </div>
             </form>

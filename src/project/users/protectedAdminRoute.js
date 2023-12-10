@@ -6,7 +6,7 @@ function ProtectedAdminRoute({ children }) {
   if (currentUser && currentUser.role === "ADMIN") {
     return children;
   }
-  return <Navigate to="/project/signin" />;
+  return <Navigate to="/signin" />;
 }
 
 export default ProtectedAdminRoute;

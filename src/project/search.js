@@ -11,7 +11,7 @@ function Search() {
   const [fullResults, setFullResults] = useState(null);
   const [searchText, setSearchText] = useState(state);
   const { query, page } = useParams();
-  const searchForShows = async (text, page) => {
+  const searchForShows = async (text="", page=1) => {
     const results = await client.fullTextSearch(text, page);
     setSearchResults(results.tv_shows);
     setFullResults(results);
@@ -47,8 +47,8 @@ function Search() {
           searchResults.map((show) => (
             <div style={{paddingBottom:"12px"}}>
               <div key={show.id} style={{height: 160, backgroundColor:"#211601", borderRadius:"16px"}}>
-                <Link to={`/show/${show.id}`} style={{"text-decoration":"none"}}>
-                  <img src={client.showImageUrl(show, true)} onError={(e)=>{e.target.onerror = null; e.target.src=missing}}
+                <Link to={`/details/${show.id}`} style={{"text-decoration":"none"}}>
+                  <img src={client.showImageUrl(show.id, true)} onError={(e)=>{e.target.onerror = null; e.target.src=missing}}
                     style={{ width:160, height:160, "border":"solid 5px #211601", borderRadius:"16px", float:"left", "margin-right":"10px"}}/>
                   <p className="wd-searchTitles">{show.name} </p> 
                   <p className="wd-searchDetails">Country: {show.country} | Network: {show.network} | Status: {show.status} </p>

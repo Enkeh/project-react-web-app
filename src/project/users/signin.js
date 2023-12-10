@@ -15,7 +15,7 @@ function SignIn() {
     try {
       const user = await client.signIn({ username, password });
       dispatch(setCurrentUser(user));
-      navigate("/account");
+      navigate("/profile");
     } catch (error) {
       setError(error.message);
     }

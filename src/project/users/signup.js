@@ -6,12 +6,14 @@ import "../index.css";
 function SignUp() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [checked, setChecked]= useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const signUp = async () => {
     try {
-      const user = await client.signUp({ username, password });
-      navigate("/account");
+      const role = checked?"CURATOR":"VIEWER";
+      const user = await client.signUp({ username, password, role });
+      navigate("/profile");
     } catch (error) {
       setError(error.message);
     }
@@ -38,6 +40,10 @@ function SignUp() {
             className="form-control mb-2"
             style={{"border":"1px solid #211601"}}
           />
+          <div className="form-check float-start wd-black">
+            <input className="form-check-input mb-2 mr-2" style={{"border":"1px solid #211601"}} type="checkbox" onChange={() => setChecked(!checked)} id="role"/>
+            <label className="form-check-label mb-2 mr-2" for="role">Allow for curation of public collection</label>
+          </div>
           <button className="btn wd-alternateButton mb-2" style={{"width":"100%"}} onClick={signUp}>
               Sign Up
           </button>

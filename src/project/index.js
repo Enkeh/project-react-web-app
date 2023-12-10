@@ -18,7 +18,7 @@ import "./index.css";
 function Project() {
   return (
     <Provider store={store}>
-      {/* <CurrentUser> */}
+      <CurrentUser>
         <div>
           <div>
             <ProjectNav />
@@ -29,10 +29,13 @@ function Project() {
               <Route path="/home" element={<Home />} />
               <Route path="/signin" element={<SignIn />} />
               <Route path="/signup" element={<SignUp />} />
-              <Route path="/account" element={<Account />} />
+              <Route path="/profile" element={<Account />} />
               <Route path="/search/:query/:page" element={<Search />} />
+              <Route path="/search//:page" element={<Search />} />
+              <Route path="/search/:query/" element={<Search />} />
+              <Route path="/search/:query" element={<Search />} />
               <Route path="/search" element={<Search />} />
-              <Route path="/show/:id" element={<Show />} />
+              <Route path="/details/:id" element={<Show />} />
               <Route
                 path="/users"
                 element={
@@ -41,11 +44,11 @@ function Project() {
                   </ProtectedAdminRoute>
                 }
               />
-              <Route path="/users/:id" element={<UserDetails />} />
+              <Route path="/profile/:id" element={<UserDetails />} />
             </Routes>
           </div>
         </div>
-      {/* </CurrentUser> */}
+      </CurrentUser>
     </Provider>
   );
 }

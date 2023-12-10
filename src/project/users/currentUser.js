@@ -3,7 +3,7 @@ import * as client from "./client";
 import { setCurrentUser } from "./reducer";
 import { useDispatch } from "react-redux";
 
-function CurrentUser({ children }) {
+function CurrentUser({children }) {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
   const dispatch = useDispatch();
@@ -12,14 +12,11 @@ function CurrentUser({ children }) {
       const user = await client.account();
       setUser(user);
       dispatch(setCurrentUser(user));
-      setLoading(false);
-      console.log("there");
-    } catch (error) {
-        console.log("anywhere");}
+    } catch (error) {}
+    setLoading(false);
   };
   useEffect(() => {
     fetchUser();
-    console.log("here");
   }, []);
   return <>{!loading && children}</>;
 }
