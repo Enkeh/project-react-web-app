@@ -13,6 +13,13 @@ export const fullTextSearch = async (text, page) => {
   return response.data;
 };
 
+export const popularShows = async (page) => {
+  const response = await axios.get(
+    `${EPISODATE_API}/most-popular?page=:${page}`
+  );
+  return response.data;
+};
+
 export const fetchShowById = async (showId) => {
   const response = await axios.get(
     `${EPISODATE_API}/show-details?q=${showId}`

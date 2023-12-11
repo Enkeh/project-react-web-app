@@ -156,12 +156,12 @@ function Account() {
               </Link>
             ))}
           </div>
-          <h2 className="wd-black">Watchlisted Shows</h2>
-          {!watchedShows.length && (
-              <span className="wd-black"> Watchlist shows to see them here! </span>
+          <h2 className="wd-black">Liked Shows</h2>
+          {!likedShows.length && (
+              <span className="wd-black"> Like shows to see them here! </span>
           )}
           <div className="list-group">
-            {watchedShows.map((show) => (
+            {likedShows.map((show) => (
             <div className = "mb-2">
               <div key={show.showId} style={{height: 40, backgroundColor:"white", borderRadius:"8px", border:"1px solid #211601"}}>
                 <Link to={`/details/${show.showId}`} style={{"text-decoration":"none"}}>
@@ -173,12 +173,12 @@ function Account() {
             </div>
             ))}
           </div>
-          <h2 className="wd-black">Liked Shows</h2>
-          {!likedShows.length && (
-              <span className="wd-black"> Like shows to see them here! </span>
+          <h2 className="wd-black">Watchlisted Shows</h2>
+          {!watchedShows.length && (
+              <span className="wd-black"> Watchlist shows to see them here! </span>
           )}
           <div className="list-group">
-            {likedShows.map((show) => (
+            {watchedShows.map((show) => (
             <div className = "mb-2">
               <div key={show.showId} style={{height: 40, backgroundColor:"white", borderRadius:"8px", border:"1px solid #211601"}}>
                 <Link to={`/details/${show.showId}`} style={{"text-decoration":"none"}}>
