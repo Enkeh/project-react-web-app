@@ -2,8 +2,7 @@ import axios from "axios";
 const request = axios.create({
   withCredentials: true,
 });
-
-const LIKES_API = "http://localhost:4000/api";
+const LIKES_API = process.env.REACT_APP_API_BASE;
 
 export const findAllLikes = async () => {
   const response = await request.get(`${LIKES_API}/likes`);

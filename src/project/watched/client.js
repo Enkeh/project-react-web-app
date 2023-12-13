@@ -3,7 +3,7 @@ const request = axios.create({
   withCredentials: true,
 });
 
-const WATCHED_API = "http://localhost:4000/api";
+const WATCHED_API = process.env.REACT_APP_API_BASE;
 
 export const findAllWatched = async () => {
   const response = await request.get(`${WATCHED_API}/watched`);

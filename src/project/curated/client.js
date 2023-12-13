@@ -3,7 +3,7 @@ const request = axios.create({
   withCredentials: true,
 });
 
-const CURATED_API = "http://localhost:4000/api";
+const CURATED_API = process.env.REACT_APP_API_BASE;
 
 export const findAllCurated = async () => {
   const response = await request.get(`${CURATED_API}/curated`);
