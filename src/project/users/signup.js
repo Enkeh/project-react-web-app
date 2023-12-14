@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import * as client from "./client";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setCurrentUser } from "./reducer";
 import "../index.css";
 
 function SignUp() {
@@ -9,10 +11,12 @@ function SignUp() {
   const [checked, setChecked]= useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const signUp = async () => {
     try {
       const role = checked?"CURATOR":"VIEWER";
       const user = await client.signUp({ username, password, role });
+      dispatch(setCurrentUser(user));
       navigate("/profile");
     } catch (error) {
       setError(error.message);
